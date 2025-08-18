@@ -69,12 +69,12 @@
             
             /* 只在第二页显示页脚 */
             @page :first {
-                margin-bottom: 20mm;
+                margin-bottom: 10mm;
             }
             
             /* 第二页页脚样式 */
             @page {
-                margin-bottom: 25mm;
+                margin-bottom: 10mm;
             }
             
             /* 模块完整性保护 */
@@ -90,10 +90,10 @@
                 page-break-after: avoid;
             }
             
-            /* 强制在核心技能前分页 */
-            .skills-section {
+            /* 专业活动与影响力强制分页 */
+            .professional-activities-section {
                 page-break-before: always;
-            }
+            } 
         }
 
         /* 标题样式 */
@@ -358,7 +358,7 @@
     <!-- 第二部分 -->
     <div class="container">
         <!-- 专业活动与影响力 -->
-        <div class="section">
+        <div class="section professional-activities-section">
             <h2>专业活动与影响力</h2>
             <h3>生财有术社群 - AI航海教练 & 生财传术师</h3>
             
@@ -382,7 +382,7 @@
         </div>
 
         <!-- 核心技能 -->
-        <div class="section skills-section">
+        <div class="section">
             <h2>核心技能</h2>
             
             <div class="compact">

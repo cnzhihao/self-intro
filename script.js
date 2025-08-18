@@ -1,3 +1,37 @@
+// Print Resume Button Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const printResumeBtn = document.getElementById('print-resume-btn');
+    
+    if (printResumeBtn) {
+        printResumeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Add active animation class
+            this.style.transform = 'translateY(0) scale(0.95)';
+            this.style.opacity = '0.8';
+            
+            // Reset animation after short delay
+            setTimeout(() => {
+                this.style.transform = '';
+                this.style.opacity = '';
+            }, 150);
+            
+            // Navigate to print page after animation
+            setTimeout(() => {
+                window.open('print.html', '_blank');
+            }, 200);
+        });
+        
+        // Add keyboard support for accessibility
+        printResumeBtn.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
+    }
+});
+
 // Mobile Navigation Toggle
 document.addEventListener('DOMContentLoaded', function() {
     const navToggle = document.getElementById('nav-toggle');
