@@ -1,3 +1,61 @@
+// Device Detection Function
+function isMobileDevice() {
+    // Check for mobile user agents
+    const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+    const isMobileUserAgent = mobileRegex.test(navigator.userAgent);
+    
+    // Check for touch capability and screen size
+    const hasTouchScreen = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    const isSmallScreen = window.innerWidth <= 768;
+    
+    // Consider it mobile if it matches user agent OR has touch + small screen
+    return isMobileUserAgent || (hasTouchScreen && isSmallScreen);
+}
+
+// Mobile Print Warning Modal Functions
+function showMobilePrintWarning() {
+    // Create modal if it doesn't exist
+    let modal = document.getElementById('mobilePrintWarning');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'mobilePrintWarning';
+        modal.className = 'mobile-print-modal';
+        modal.innerHTML = `
+            <div class="mobile-print-modal-content">
+                <div class="mobile-print-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ff6b6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                    </svg>
+                </div>
+                <h3>打印提示</h3>
+                <p>为获得最佳打印效果，建议您在电脑端打开此页面进行打印。</p>
+                <div class="mobile-print-modal-buttons">
+                    <button class="mobile-print-btn-close" onclick="closeMobilePrintWarning()">知道了</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    
+    // Auto close after 3 seconds
+    setTimeout(() => {
+        closeMobilePrintWarning();
+    }, 3000);
+}
+
+function closeMobilePrintWarning() {
+    const modal = document.getElementById('mobilePrintWarning');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
 // Print Resume Button Functionality
 document.addEventListener('DOMContentLoaded', function() {
     const printResumeBtn = document.getElementById('print-resume-btn');
@@ -6,20 +64,34 @@ document.addEventListener('DOMContentLoaded', function() {
         printResumeBtn.addEventListener('click', function(e) {
             e.preventDefault();
             
-            // Add active animation class
-            this.style.transform = 'translateY(0) scale(0.95)';
-            this.style.opacity = '0.8';
-            
-            // Reset animation after short delay
-            setTimeout(() => {
-                this.style.transform = '';
-                this.style.opacity = '';
-            }, 150);
-            
-            // Trigger print functionality after animation
-            setTimeout(() => {
-                printResumePage();
-            }, 200);
+            // Check if it's a mobile device
+            if (isMobileDevice()) {
+                // Add active animation class for mobile
+                this.style.transform = 'translateY(0) scale(0.95)';
+                this.style.opacity = '0.8';
+                
+                // Reset animation and show mobile warning
+                setTimeout(() => {
+                    this.style.transform = '';
+                    this.style.opacity = '';
+                    showMobilePrintWarning();
+                }, 150);
+            } else {
+                // Normal desktop print behavior
+                this.style.transform = 'translateY(0) scale(0.95)';
+                this.style.opacity = '0.8';
+                
+                // Reset animation after short delay
+                setTimeout(() => {
+                    this.style.transform = '';
+                    this.style.opacity = '';
+                }, 150);
+                
+                // Trigger print functionality after animation
+                setTimeout(() => {
+                    printResumePage();
+                }, 200);
+            }
         });
         
         // Add keyboard support for accessibility

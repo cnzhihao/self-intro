@@ -974,3 +974,117 @@ strong {
     color: #1d1d1f;
     font-weight: 600;
 }
+
+/* Mobile Print Warning Modal */
+.mobile-print-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.mobile-print-modal-content {
+    position: relative;
+    background-color: #ffffff;
+    margin: auto;
+    padding: 24px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 320px;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: slideInUp 0.3s ease-out;
+}
+
+.mobile-print-icon {
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
+}
+
+.mobile-print-modal-content h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-bottom: 12px;
+}
+
+.mobile-print-modal-content p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.mobile-print-modal-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.mobile-print-btn-close {
+    background: #007aff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 80px;
+}
+
+.mobile-print-btn-close:hover {
+    background: #0056cc;
+    transform: translateY(-1px);
+}
+
+.mobile-print-btn-close:active {
+    transform: translateY(0);
+    background: #004499;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(-50%) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-50%) translateY(0);
+    }
+}
+
+/* Mobile specific adjustments for the modal */
+@media (max-width: 480px) {
+    .mobile-print-modal-content {
+        padding: 20px;
+        width: 85%;
+        max-width: 280px;
+    }
+    
+    .mobile-print-modal-content h3 {
+        font-size: 16px;
+    }
+    
+    .mobile-print-modal-content p {
+        font-size: 13px;
+    }
+}
