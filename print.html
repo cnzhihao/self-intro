@@ -171,6 +171,10 @@
             border-bottom: 3px solid #1a73e8;
         }
 
+        .header-left {
+            flex: 1;
+        }
+
         .header-left h1 {
             margin-bottom: 4px;
         }
@@ -179,15 +183,52 @@
             font-size: 12px;
             color: #666;
             font-weight: normal;
+            margin-bottom: 8px;
         }
 
         .contact-info {
-            text-align: right;
             font-size: 10px;
+            line-height: 16px;
         }
 
         .contact-info div {
             margin-bottom: 2px;
+        }
+
+        /* 二维码容器样式 */
+        .qr-container {
+            width: 100px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        /* 二维码提示文字 */
+        .qr-text {
+            font-size: 8px;
+            color: #999;
+            text-align: center;
+            margin-top: 4px;
+            line-height: 10px;
+        }
+
+        .qr-code {
+            width: 80px;
+            height: 80px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         /* 两栏布局 */
@@ -287,11 +328,17 @@
             <div class="header-left">
                 <h1>徐智昊</h1>
                 <div class="role">AI产品经理 | AI Agent产品专家 | Vibecoding讲师</div>
+                <div class="contact-info">
+                    <div><strong>城市：</strong>杭州</div>
+                    <div><strong>邮箱：</strong>zhcnzhihao@gmail.com</div>
+                    <div><strong>GitHub：</strong>github.com/cnzhihao</div>
+                </div>
             </div>
-            <div class="contact-info">
-                <div><strong>城市：</strong>杭州</div>
-                <div><strong>邮箱：</strong>zhcnzhihao@gmail.com</div>
-                <div><strong>GitHub：</strong>github.com/cnzhihao</div>
+            <div class="qr-container">
+                <div class="qr-code">
+                    <img src="asset/self-intro.png" alt="个人简历官网二维码" />
+                </div>
+                <div class="qr-text">扫码查看html简历</div>
             </div>
         </div>
 

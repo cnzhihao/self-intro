@@ -16,9 +16,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.style.opacity = '';
             }, 150);
             
-            // Navigate to print page after animation
+            // Trigger print functionality after animation
             setTimeout(() => {
-                window.open('print.html', '_blank');
+                printResumePage();
             }, 200);
         });
         
@@ -31,6 +31,64 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Print Resume Page Function
+function printResumePage() {
+    // Create a hidden iframe to load the print page
+    const printFrame = document.createElement('iframe');
+    printFrame.style.position = 'absolute';
+    printFrame.style.left = '-9999px';
+    printFrame.style.top = '-9999px';
+    printFrame.style.width = '1px';
+    printFrame.style.height = '1px';
+    printFrame.style.visibility = 'hidden';
+    
+    // Add the iframe to the document
+    document.body.appendChild(printFrame);
+    
+    // Load the print page
+    printFrame.src = 'print.html';
+    
+    // Wait for the iframe to load, then trigger print
+    printFrame.onload = function() {
+        try {
+            // Focus the iframe
+            printFrame.contentWindow.focus();
+            
+            // Trigger print dialog
+            printFrame.contentWindow.print();
+            
+            // Clean up - remove iframe after print dialog
+            setTimeout(() => {
+                if (document.body.contains(printFrame)) {
+                    document.body.removeChild(printFrame);
+                }
+            }, 1000);
+            
+        } catch (error) {
+            console.error('Print error:', error);
+            // Fallback: open in new window if iframe method fails
+            window.open('print.html', '_blank');
+            
+            // Clean up iframe
+            if (document.body.contains(printFrame)) {
+                document.body.removeChild(printFrame);
+            }
+        }
+    };
+    
+    // Handle load error
+    printFrame.onerror = function() {
+        console.error('Failed to load print page');
+        // Fallback: open in new window
+        window.open('print.html', '_blank');
+        
+        // Clean up iframe
+        if (document.body.contains(printFrame)) {
+            document.body.removeChild(printFrame);
+        }
+    };
+}
 
 // Mobile Navigation Toggle
 document.addEventListener('DOMContentLoaded', function() {
