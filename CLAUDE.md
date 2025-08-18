@@ -29,19 +29,22 @@ This is a personal resume website project for showcasing professional experience
 
 ## Development Commands
 ```bash
-# Install dependencies
+# Start local development server
+python3 -m http.server 8000
+
+# Install dependencies (if using Node.js)
 npm install
 
-# Start development server
+# Start development server (if using Node.js)
 npm run dev
 
-# Build for production
+# Build for production (if using Node.js)
 npm run build
 
-# Start production server
+# Start production server (if using Node.js)
 npm start
 
-# Run linting
+# Run linting (if configured)
 npm run lint
 
 # Run type checking (if TypeScript)

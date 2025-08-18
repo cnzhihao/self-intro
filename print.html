@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>徐智昊 - AI产品经理简历 - 打印版</title>
+    <style>
+        /* 通用样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            background: white;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 内容容器样式 */
+        .container {
+            background: white;
+        }
+
+        /* 打印样式 */
+        @media print {
+            body {
+                margin: 0;
+                padding: 15mm;
+                max-width: none;
+            }
+            
+            .container {
+                padding: 0;
+            }
+            
+            /* 打印时保持关键颜色 */
+            h1 {
+                color: #1a73e8 !important;
+            }
+            
+            h2 {
+                color: #333 !important;
+                border-bottom-color: #1a73e8 !important;
+            }
+            
+            strong {
+                color: #1a73e8 !important;
+            }
+            
+            .project h4 {
+                color: #1a73e8 !important;
+            }
+            
+            .footer {
+                color: #666 !important;
+                border-top-color: #000 !important;
+                position: fixed;
+                bottom: 10mm;
+                left: 15mm;
+                right: 15mm;
+                z-index: 999;
+            }
+            
+            /* 只在第二页显示页脚 */
+            @page :first {
+                margin-bottom: 20mm;
+            }
+            
+            /* 第二页页脚样式 */
+            @page {
+                margin-bottom: 25mm;
+            }
+            
+            /* 模块完整性保护 */
+            .section {
+                page-break-inside: avoid;
+            }
+            
+            .project {
+                page-break-inside: avoid;
+            }
+            
+            h2, h3, h4 {
+                page-break-after: avoid;
+            }
+            
+            /* 强制在核心技能前分页 */
+            .skills-section {
+                page-break-before: always;
+            }
+        }
+
+        /* 标题样式 */
+        h1 {
+            font-size: 24px;
+            line-height: 36px;
+            font-weight: bold;
+            color: #1a73e8;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: bold;
+            color: #333;
+            margin: 12px 0 10px 0;
+            border-bottom: 2px solid #1a73e8;
+            padding-bottom: 2px;
+        }
+
+        h3 {
+            font-size: 14px;
+            line-height: 21px;
+            font-weight: bold;
+            color: #333;
+            margin: 10px 0 6px 0;
+        }
+
+        h4 {
+            font-size: 12px;
+            line-height: 18px;
+            font-weight: bold;
+            color: #555;
+            margin: 8px 0 4px 0;
+        }
+
+        /* 段落和列表 */
+        p {
+            font-size: 10px;
+            line-height: 15px;
+            margin-bottom: 5px;
+            text-align: justify;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 8px;
+        }
+
+        li {
+            font-size: 10px;
+            line-height: 15px;
+            margin-bottom: 3px;
+            padding-left: 8px;
+            position: relative;
+        }
+
+        li:before {
+            content: "•";
+            color: #1a73e8;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* 个人信息头部 */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #1a73e8;
+        }
+
+        .header-left h1 {
+            margin-bottom: 4px;
+        }
+
+        .role {
+            font-size: 12px;
+            color: #666;
+            font-weight: normal;
+        }
+
+        .contact-info {
+            text-align: right;
+            font-size: 10px;
+        }
+
+        .contact-info div {
+            margin-bottom: 2px;
+        }
+
+        /* 两栏布局 */
+        .two-columns {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .column-left {
+            flex: 1;
+        }
+
+        .column-right {
+            flex: 1;
+        }
+
+        /* 三栏布局 */
+        .three-columns {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+
+        .three-columns > div {
+            flex: 1;
+        }
+
+        /* 项目经验样式 */
+        .project {
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .project:last-child {
+            border-bottom: none;
+        }
+
+        .project h4 {
+            color: #1a73e8;
+            margin-bottom: 5px;
+        }
+
+        .github-link {
+            font-size: 9px;
+            line-height: 14px;
+            color: #666;
+            margin-top: 3px;
+        }
+
+        /* 技能标签 */
+        .skill-tag {
+            display: inline-block;
+            background: #f0f0f0;
+            padding: 2px 6px;
+            margin: 2px 4px 2px 0;
+            border-radius: 3px;
+            font-size: 9px;
+        }
+
+        /* 强调文本 */
+        .highlight {
+            background: #fff3cd;
+            padding: 1px 3px;
+            border-radius: 2px;
+        }
+
+        strong {
+            color: #1a73e8;
+        }
+
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            font-size: 8px;
+            color: #999;
+            border-top: 1px solid #eee;
+            padding-top: 5px;
+            margin-top: 20px;
+        }
+
+        /* 分段样式 */
+        .section {
+            margin-bottom: 12px;
+        }
+
+        .compact {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 个人信息头部 -->
+        <div class="header">
+            <div class="header-left">
+                <h1>徐智昊</h1>
+                <div class="role">AI产品经理 | AI Agent产品专家 | Vibecoding讲师</div>
+            </div>
+            <div class="contact-info">
+                <div><strong>城市：</strong>杭州</div>
+                <div><strong>邮箱：</strong>zhcnzhihao@gmail.com</div>
+                <div><strong>GitHub：</strong>github.com/cnzhihao</div>
+            </div>
+        </div>
+
+        <!-- 个人简介 -->
+        <div class="section">
+            <h2>个人简介</h2>
+            <div class="three-columns">
+                <div>
+                    <h3>专业定位</h3>
+                    <p>资深AI产品经理，专注于AI Coding产品设计与用户体验优化，具备2年+AI编程实践和丰富的开发者工具产品管理经验，深度理解软件开发流程和开发者痛点。</p>
+                </div>
+                <div>
+                    <h3>核心优势</h3>
+                    <p>通过对10+款AI IDE深度调研分析（包括Cursor、Claude Code等主流产品），具备AI辅助编程交互设计的系统性方法论，擅长信息架构规划和界面布局设计。</p>
+                </div>
+                <div>
+                    <h3>价值创造</h3>
+                    <p>具备端到端产品设计能力，通过用户调研和数据分析驱动产品创新，在AI开发者工具领域拥有从0到1的产品孵化和用户体验优化经验。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 项目经验 -->
+        <div class="section">
+            <h2>项目经验</h2>
+            <h3>AI Coding产品核心能力增强工具集 (MCP)</h3>
+            <p style="margin-bottom: 6px;">独立设计并开发三款AI开发Agent增强工具，构建端到端的AI辅助编程产品生态，通过深度理解开发者工作流程和痛点，显著提升AI Coding产品在复杂软件开发任务中的实用性和开发体验。</p>
+            
+            <div class="project">
+                <h4>1. Synapse MCP - 智能记忆与知识检索系统</h4>
+                <ul>
+                    <li>设计<strong>三层搜索架构</strong>（精确匹配、标签过滤、内容匹配）交互流程，优化AI Coding产品的用户体验，解决开发者在AI辅助编程中的上下文丢失痛点</li>
+                    <li>创新设计<strong>主动上下文注入</strong>交互模式，通过用户行为分析自动识别开发模式，形成智能化的开发工具体验，<strong>显著提升开发效率</strong></li>
+                    <li>基于用户调研设计解决方案提取机制，支持代码、方法、模式三种开发场景，优化开发者工作流程，实现高效的问题解决体验</li>
+                    <li>集成完整的数据管理功能，包括导入导出、备份恢复、存储信息查看等企业级特性</li>
+                </ul>
+                <div class="github-link">GitHub: github.com/cnzhihao/synapse-mcp</div>
+            </div>
+
+            <div class="project">
+                <h4>2. MCP-Artisan - AI辅助编程可视化开发工具</h4>
+                <ul>
+                    <li>主导设计v2.0.0版本的<strong>AI开发工具产品</strong>，专注于提升开发者的可视化编程体验，采用安全工作区设计保障产品安全性</li>
+                    <li>设计<strong>直观高效的交互流程</strong>，实现智能文件管理和工作流自动化，显著提升开发者的操作效率和产品使用体验</li>
+                    <li>深入理解开发者多平台工作需求，设计跨平台兼容解决方案，提升产品适用性和用户满意度</li>
+                    <li>注重产品细节和开发者体验，提供完整的技术支持和现代化开发工具链集成</li>
+                </ul>
+                <div class="github-link">GitHub: github.com/cnzhihao/mcp-artisan</div>
+            </div>
+
+            <div class="project">
+                <h4>3. Software-planning-mcp - AI开发流程优化工具</h4>
+                <ul>
+                    <li>设计交互式开发流程优化产品，支持<strong>智能项目管理</strong>和<strong>自动任务识别</strong>，解决开发者在多项目管理中的效率痛点</li>
+                    <li>通过用户行为研究设计任务管理体系，集成<strong>智能评估算法</strong>和代码生成辅助，极大提升开发者的工作效率和项目管理体验</li>
+                    <li>设计直观的信息架构，实现自动文档生成和任务可视化，优化开发者的认知负载和协作效率</li>
+                    <li>与主流IDE产品深度集成，提供无缝的开发工具链体验，提升AI辅助编程产品的整体用户体验</li>
+                </ul>
+                <div class="github-link">GitHub: github.com/cnzhihao/Software-planning-mcp</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第二部分 -->
+    <div class="container">
+        <!-- 专业活动与影响力 -->
+        <div class="section">
+            <h2>专业活动与影响力</h2>
+            <h3>生财有术社群 - AI航海教练 & 生财传术师</h3>
+            
+            <div>
+                <h4>AI开发工具产品专家（2025年）</h4>
+                <ul>
+                    <li><strong>连续三次担任AI Coding产品教练</strong>，专注DeepSeek、MCP、ClaudeCode等前沿AI开发工具，具备深度的行业趋势洞察和产品理解</li>
+                    <li>设计并实施AI辅助编程的结构化培训体系，通过创新的交互模式帮助开发者提升工作效率，<strong>培训效果获得广泛认可</strong></li>
+                    <li>通过实战项目指导探索AI开发工具的最佳实践，<strong>在AI Coding产品设计和用户体验优化方面积累了丰富经验</strong></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4>产品创新与社群运营</h4>
+                <ul>
+                    <li>获得<strong>线下产品培训开办权限</strong>，具备独立策划和执行大型AI产品培训活动的能力，展现出色的项目管理和跨团队协作能力</li>
+                    <li><strong>成功举办多期AI开发工具产品体验活动</strong>，涵盖产品设计、用户体验、技术实战等维度，获得参与者一致好评</li>
+                    <li>通过创新的用户运营模式，累计服务AI开发者数百人，<strong>在AI Coding产品推广和用户教育方面形成了显著影响力</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 核心技能 -->
+        <div class="section skills-section">
+            <h2>核心技能</h2>
+            
+            <div class="compact">
+                <h3>AI原生工作流体系</h3>
+                <p>独创并推广了一套完整的AI原生软件开发方法论，该工作流程已在开发者社群中广泛应用并获得大量好评，显著提升软件开发效率和质量。</p>
+                
+                <div style="margin-top: 6px;">
+                    <div>
+                        <h4>阶段一：需求澄清与调研</h4>
+                        <p>与网页端Chat AI进行深度对话澄清需求；运用Agent浏览器进行信息采集；使用长工作流Agent执行完整需求调研。</p>
+                        
+                        <h4>阶段二：产品开发结构化设计</h4>
+                        <p>采用敏捷开发方法进行迭代式产品开发，将复杂需求进行敏捷拆解，形成可执行的开发任务清单。</p>
+                    </div>
+                    <div>
+                        <h4>阶段三：AI IDE协同开发</h4>
+                        <p>使用AI IDE按工作流程逐步开发，采用TDD方式确保代码质量，实现高效的人机协同编程体验。</p>
+                        
+                        <h4>阶段四：自动化部署上线</h4>
+                        <p>集成现代化部署流程，实现从开发到生产环境的无缝过渡，确保产品快速迭代和稳定交付。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3>技术栈与工具</h3>
+                <p><strong>编程基础：</strong>精通Python、JavaScript、Next.js等主流技术栈，具备与技术团队无障碍沟通的编程知识背景</p>
+                <p><strong>AI产品设计：</strong>熟练使用n8n、coze等AI工作流设计工具，具备AI Coding产品的交互流程设计和原型开发能力</p>
+                <p><strong>开发工具链：</strong>深度熟悉软件开发流程和IDE产品，具备端到端AI开发工具设计和用户体验优化能力</p>
+                <p><strong>产品设计工具：</strong>熟练掌握Axure、Figma等产品原型设计工具，擅长信息架构规划和界面布局设计</p>
+            </div>
+            
+            <div>
+                <h3>产品管理与用户体验</h3>
+                <p><strong>10年产品管理经验</strong>，具备优秀的沟通能力、项目管理能力和跨团队协作能力，擅长以用户价值为先的产品创新：</p>
+                <ul>
+                    <li>用户调研与行业分析：深入理解开发者群体需求和工作方式痛点</li>
+                    <li>交互设计与用户体验：具备敏锐的交互设计洞察力，注重产品细节和用户体验</li>
+                    <li>产品规划与团队协作：具备创新精神和解决问题能力，能在快速变化的技术环境中灵活应对</li>
+                    <li>数据驱动优化：通过用户调研、数据分析等方式持续优化产品体验和用户运营</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 学历与资质 -->
+        <div class="section">
+            <h2>学历与资质</h2>
+            
+            <div>
+                <h3>教育背景</h3>
+                <p><strong>江西财经大学</strong> | 会计学（注册会计师方向） | 本科</p>
+                <p><strong>专业资质：</strong>注册会计师</p>
+            </div>
+            
+            <div>
+                <h3>软件开发相关资质</h3>
+                <div class="two-columns">
+                    <div>
+                        <h4>信息系统项目管理师</h4>
+                        <p>软考高级认证</p>
+                    </div>
+                    <div>
+                        <h4>软件著作权</h4>
+                        <p>文档卡片生成软件【卡片生成器】 ｜ 登记号：2025SR1155317</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="footer">
+        © 2025 徐智昊 | 专注AI原生开发工具和产品创新 | GitHub: github.com/cnzhihao | Email: zhcnzhihao@gmail.com ｜ Build with ClaudeCode
+    </div>
+</body>
+</html>
